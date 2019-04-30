@@ -27,14 +27,24 @@ namespace SortedListExTask
         {
             try
             {
+                //Validate the user entered in text
                 if (string.IsNullOrWhiteSpace(txtTask.Text))
                 {
                     MessageBox.Show("You must enter a task", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
+                //Validate the user doesn't pick a date that is already assigned.
+                if (Tasks.Keys.Contains(dtpTaskDate.Value))
+                {
+                    MessageBox.Show("Only one task per date is allowed.", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                //Add task to SortedList
                 Tasks.Add(dtpTaskDate.Value, txtTask.Text.Trim());
                    
+                //Bind lstTasks with Tasks values
                 lstTasks.DisplayMember = "key";
                 lstTasks.ValueMember = "value";
                 lstTasks.DataSource = new BindingSource(Tasks, null);
