@@ -16,6 +16,8 @@ namespace SortedListExTask
 {
     public partial class Form1 : Form
     {
+        SortedList<DateTime, string> Tasks = new SortedList<DateTime, string>();
+
         public Form1()
         {
             InitializeComponent();
@@ -23,10 +25,28 @@ namespace SortedListExTask
 
         private void btnAddTask_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtTask.Text))
+            try
             {
-                MessageBox.Show("You must enter a task", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (string.IsNullOrWhiteSpace(txtTask.Text))
+                {
+                    MessageBox.Show("You must enter a task", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                Tasks.Add(dtpTaskDate.Value, txtTask.Text.Trim());
+                   
+                lstTasks.DisplayMember = "key";
+                lstTasks.ValueMember = "value";
+                lstTasks.DataSource = new BindingSource(Tasks, null);
+
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+            
+
+
         }
     }
 }
