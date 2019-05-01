@@ -35,28 +35,55 @@ namespace SortedListExTask
                 }
 
                 //Validate the user doesn't pick a date that is already assigned.
-                if (Tasks.Keys.Contains(dtpTaskDate.Value))
+                if (Tasks.Keys.Contains(dtpTaskDate.Value.Date))
                 {
                     MessageBox.Show("Only one task per date is allowed.", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 //Add task to SortedList
-                Tasks.Add(dtpTaskDate.Value, txtTask.Text.Trim());
-                   
-                //Bind lstTasks with Tasks values
-                lstTasks.DisplayMember = "key";
-                lstTasks.ValueMember = "value";
-                lstTasks.DataSource = new BindingSource(Tasks, null);
+                Tasks.Add(dtpTaskDate.Value.Date, txtTask.Text.Trim());
+
+                //Add task to lstbox
+                lstTasks.Items.Add(dtpTaskDate.Value.Date);
+
+                //Clear txtTask
+                txtTask.ResetText();
+                //Reset DateTimePicker
+                dtpTaskDate.Value = DateTime.Now.Date;
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
-            
+        }
+
+        private void lstTasks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblTaskDetails.Text = Tasks[Convert.ToDateTime(lstTasks.SelectedItem)];
+
+        }
 
 
+        //Playing around --ignore--
+        private void dtpTaskDate_ValueChanged(object sender, EventArgs e)
+        {
+            //MessageBox.Show($"Now: {DateTime.Now}");
+            //dtpTaskDate.ValueChanged -= new EventHandler(dtpTaskDate_ValueChanged);
+            //dtpTaskDate.Value = dtpTaskDate.Value.Date;
+            //MessageBox.Show(dtpTaskDate.Value.ToString());
+            //dtpTaskDate.Value = dtpTaskDate.Value.AddHours(DateTime.Now.Hour).AddMinutes(DateTime.Now.Minute).AddSeconds(DateTime.Now.Second);
+            //MessageBox.Show(dtpTaskDate.Value.ToString());
+            //dtpTaskDate.ValueChanged += new EventHandler(dtpTaskDate_ValueChanged);
+        }
+
+        private void btnRemoveTask_Click(object sender, EventArgs e)
+        {
+            if (lstTasks.SelectedIndex == -1)
+            {
+                MessageBox.Show("You must select a task to remove.", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

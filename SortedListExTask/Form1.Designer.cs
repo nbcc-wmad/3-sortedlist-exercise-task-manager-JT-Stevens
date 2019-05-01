@@ -52,27 +52,29 @@
             // btnRemoveTask
             // 
             this.btnRemoveTask.Location = new System.Drawing.Point(579, 41);
-            this.btnRemoveTask.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRemoveTask.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemoveTask.Name = "btnRemoveTask";
             this.btnRemoveTask.Size = new System.Drawing.Size(179, 28);
             this.btnRemoveTask.TabIndex = 15;
             this.btnRemoveTask.Text = "Remove Task";
             this.btnRemoveTask.UseVisualStyleBackColor = true;
+            this.btnRemoveTask.Click += new System.EventHandler(this.btnRemoveTask_Click);
             // 
             // lstTasks
             // 
             this.lstTasks.FormattingEnabled = true;
             this.lstTasks.ItemHeight = 16;
             this.lstTasks.Location = new System.Drawing.Point(320, 41);
-            this.lstTasks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstTasks.Margin = new System.Windows.Forms.Padding(4);
             this.lstTasks.Name = "lstTasks";
             this.lstTasks.Size = new System.Drawing.Size(249, 116);
             this.lstTasks.TabIndex = 14;
+            this.lstTasks.SelectedIndexChanged += new System.EventHandler(this.lstTasks_SelectedIndexChanged);
             // 
             // btnPrintAll
             // 
             this.btnPrintAll.Location = new System.Drawing.Point(579, 73);
-            this.btnPrintAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPrintAll.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrintAll.Name = "btnPrintAll";
             this.btnPrintAll.Size = new System.Drawing.Size(179, 28);
             this.btnPrintAll.TabIndex = 13;
@@ -91,7 +93,7 @@
             // btnAddTask
             // 
             this.btnAddTask.Location = new System.Drawing.Point(32, 203);
-            this.btnAddTask.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddTask.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddTask.Name = "btnAddTask";
             this.btnAddTask.Size = new System.Drawing.Size(267, 28);
             this.btnAddTask.TabIndex = 11;
@@ -102,7 +104,7 @@
             // txtTask
             // 
             this.txtTask.Location = new System.Drawing.Point(32, 73);
-            this.txtTask.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTask.Margin = new System.Windows.Forms.Padding(4);
             this.txtTask.Multiline = true;
             this.txtTask.Name = "txtTask";
             this.txtTask.Size = new System.Drawing.Size(265, 122);
@@ -111,13 +113,15 @@
             // dtpTaskDate
             // 
             this.dtpTaskDate.Location = new System.Drawing.Point(32, 41);
-            this.dtpTaskDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpTaskDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpTaskDate.Name = "dtpTaskDate";
             this.dtpTaskDate.Size = new System.Drawing.Size(265, 22);
             this.dtpTaskDate.TabIndex = 9;
+            this.dtpTaskDate.ValueChanged += new System.EventHandler(this.dtpTaskDate_ValueChanged);
             // 
             // Form1
             // 
+            this.AcceptButton = this.btnAddTask;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(789, 246);
@@ -129,7 +133,7 @@
             this.Controls.Add(this.btnAddTask);
             this.Controls.Add(this.txtTask);
             this.Controls.Add(this.dtpTaskDate);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
