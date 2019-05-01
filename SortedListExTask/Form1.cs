@@ -95,5 +95,15 @@ namespace SortedListExTask
             lstTasks.SelectedIndex = -1;
             lblTaskDetails.Text = string.Empty;
         }
+
+        private void btnPrintAll_Click(object sender, EventArgs e)
+        {
+            string msg = "";
+            foreach (var task in Tasks)
+            {
+                msg += $"{task.Key.ToShortDateString()} {task.Value}{Environment.NewLine}";
+            }
+            MessageBox.Show(msg);
+        }
     }
 }
