@@ -61,8 +61,10 @@ namespace SortedListExTask
 
         private void lstTasks_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lblTaskDetails.Text = Tasks[Convert.ToDateTime(lstTasks.SelectedItem)];
-
+            if (lstTasks.SelectedIndex != -1)
+            {
+                lblTaskDetails.Text = Tasks[Convert.ToDateTime(lstTasks.SelectedItem)];
+            }
         }
 
 
@@ -80,10 +82,18 @@ namespace SortedListExTask
 
         private void btnRemoveTask_Click(object sender, EventArgs e)
         {
+            //Validate user selected an item
             if (lstTasks.SelectedIndex == -1)
             {
                 MessageBox.Show("You must select a task to remove.", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            //Remove item from lst and Tasks
+            Tasks.Remove(Convert.ToDateTime(lstTasks.SelectedItem));
+            lstTasks.Items.Remove(Convert.ToDateTime(lstTasks.SelectedItem));
+            lstTasks.SelectedIndex = -1;
+            lblTaskDetails.Text = string.Empty;
         }
     }
 }

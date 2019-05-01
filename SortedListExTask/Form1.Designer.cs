@@ -69,7 +69,7 @@
             this.lstTasks.Name = "lstTasks";
             this.lstTasks.Size = new System.Drawing.Size(249, 116);
             this.lstTasks.TabIndex = 14;
-            this.lstTasks.SelectedIndexChanged += new System.EventHandler(this.lstTasks_SelectedIndexChanged);
+            this.lstTasks.SelectedValueChanged += new System.EventHandler(this.lstTasks_SelectedIndexChanged);
             // 
             // btnPrintAll
             // 
