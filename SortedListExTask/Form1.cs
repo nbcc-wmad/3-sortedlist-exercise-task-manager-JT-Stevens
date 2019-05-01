@@ -23,6 +23,11 @@ namespace SortedListExTask
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Adds user input into Tasks and lstTasks
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddTask_Click(object sender, EventArgs e)
         {
             try
@@ -59,6 +64,11 @@ namespace SortedListExTask
             }
         }
 
+        /// <summary>
+        /// Displays selected task description in the label box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lstTasks_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstTasks.SelectedIndex != -1)
@@ -80,6 +90,12 @@ namespace SortedListExTask
             //dtpTaskDate.ValueChanged += new EventHandler(dtpTaskDate_ValueChanged);
         }
 
+
+        /// <summary>
+        /// Remove the selected task from lstTask and Tasks
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRemoveTask_Click(object sender, EventArgs e)
         {
             //Validate user selected an item
@@ -96,6 +112,12 @@ namespace SortedListExTask
             lblTaskDetails.Text = string.Empty;
         }
 
+
+        /// <summary>
+        /// Display all saved Tasks in a message box.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPrintAll_Click(object sender, EventArgs e)
         {
             string msg = "";
